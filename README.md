@@ -108,13 +108,6 @@ flutter run
 
 Following these steps, you can customize and package your V2Hiddify client to suit your panel needs.
 
-### English Interface
-<p align="center">
-  <img src="./images/login_en.jpg" alt="Login Example EN" width="200"/>
-  <img src="./images/home_en.jpg" alt="Home Example EN" width="200"/>
-  <img src="./images/plan_en.jpg" alt="Plan Example EN" width="200"/>
-  <img src="./images/connect_en.jpg" alt="Connect Example EN" width="200"/>
-</p>
 
 ### Support This Project
 
