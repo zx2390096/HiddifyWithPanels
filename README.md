@@ -118,5 +118,3 @@ Supporting individual developers is not easy; if this project has been helpful t
 TFPvpxb5k2mYYcvABe5BrCz7Tt6BhnZxxj
 ```
 
-<img src="images/usdt_trc20.png" alt="USDT TRC20 Donation QR Code" width="500"/>
-
