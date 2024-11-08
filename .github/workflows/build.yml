@@ -63,6 +63,9 @@ jobs:
           flutter pub get
           dart run build_runner build --delete-conflicting-outputs
           dart run slang
+          
+      - name: Install flutter_distributor
+        run: flutter pub global activate flutter_distributor
 
       - name: Prepare for Windows
         run: |
