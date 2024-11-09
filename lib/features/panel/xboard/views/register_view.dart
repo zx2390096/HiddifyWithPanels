@@ -50,9 +50,11 @@ class RegisterPage extends ConsumerWidget {
                 decoration: InputDecoration(
                   labelText: t.register.password,
                   suffixIcon: IconButton(
-                    icon: Icon(registerViewModel.obscurePassword
-                        ? Icons.visibility
-                        : Icons.visibility_off,),
+                    icon: Icon(
+                      registerViewModel.obscurePassword
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                    ),
                     onPressed: registerViewModel.togglePasswordVisibility,
                   ),
                 ),

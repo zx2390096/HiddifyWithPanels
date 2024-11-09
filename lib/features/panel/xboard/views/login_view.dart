@@ -134,13 +134,20 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                       loginViewModel.passwordController.text;
                                   try {
                                     await loginViewModel.login(
-                                        email, password, context, ref,);
+                                      email,
+                                      password,
+                                      context,
+                                      ref,
+                                    );
                                     if (context.mounted) {
                                       context.go('/');
                                     }
                                   } catch (e) {
-                                    _showErrorSnackbar(context,
-                                        "${t.login.loginErr}: $e", Colors.red,);
+                                    _showErrorSnackbar(
+                                      context,
+                                      "${t.login.loginErr}: $e",
+                                      Colors.red,
+                                    );
                                   }
                                 }
                               : null, // 禁用按钮，直到连通性检查通过

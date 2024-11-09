@@ -89,7 +89,7 @@ class _PurchasePageState extends ConsumerState<PurchasePage> {
     );
   }
 
-  Widget _buildPlanCard(
+Widget _buildPlanCard(
     Plan plan,
     Translations t,
     BuildContext context,
@@ -116,26 +116,33 @@ class _PurchasePageState extends ConsumerState<PurchasePage> {
             const SizedBox(height: 8),
             _buildUniformStyledContent(plan.content ?? t.purchase.noData),
             const SizedBox(height: 8),
-            PriceWidget(
-              plan: plan,
-              priceLabel: t.purchase.priceLabel,
-              currency: t.purchase.rmb,
-            ),
-            const SizedBox(height: 8),
-            ElevatedButton(
-              onPressed: () {
-                showPurchaseDialog(context, plan, t, ref);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // 调整价格字体
+                PriceWidget(
+                  plan: plan,
+                  priceLabel: t.purchase.priceLabel,
+                  currency: t.purchase.rmb,
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold,),
                 ),
-              ),
-              child: Text(
-                t.purchase.subscribe,
-                style: const TextStyle(color: Colors.white),
-              ),
+                ElevatedButton(
+                  onPressed: () {
+                    showPurchaseDialog(context, plan, t, ref);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(
+                    t.purchase.subscribe,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -152,12 +159,12 @@ class _PurchasePageState extends ConsumerState<PurchasePage> {
           padding: const EdgeInsets.symmetric(vertical: 6.0),
           child: Row(
             children: [
-              const Icon(
-                FluentIcons.checkmark_circle_24_filled,
-                color: Colors.blue,
-                size: 20,
-              ),
-              const SizedBox(width: 8),
+              // const Icon(
+              //   FluentIcons.checkmark_circle_24_filled,
+              //   color: Colors.blue,
+              //   size: 20,
+              // ),
+              // const SizedBox(width: 8),
               Expanded(
                 child: Text(
                   line.trim(),

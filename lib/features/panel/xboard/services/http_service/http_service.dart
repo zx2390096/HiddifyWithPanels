@@ -45,10 +45,13 @@ class HttpService {
   }
 
   // 统一的 POST 请求方法
+
+  // 统一的 POST 请求方法，增加 requiresHeaders 开关
   Future<Map<String, dynamic>> postRequest(
     String endpoint,
     Map<String, dynamic> body, {
     Map<String, String>? headers,
+    bool requiresHeaders = true, // 新增开关参数，默认需要 headers
   }) async {
     final url = Uri.parse('$baseUrl$endpoint');
 
@@ -56,7 +59,9 @@ class HttpService {
       final response = await http
           .post(
             url,
-            headers: headers ?? {'Content-Type': 'application/json'},
+            headers: requiresHeaders
+                ? (headers ?? {'Content-Type': 'application/json'})
+                : null,
             body: json.encode(body),
           )
           .timeout(const Duration(seconds: 20)); // 设置超时时间
@@ -71,6 +76,43 @@ class HttpService {
             "POST request to $baseUrl$endpoint failed: ${response.statusCode}, ${response.body}");
       }
     } catch (e) {
+      if (kDebugMode) {
+        print('Error during POST request to $baseUrl$endpoint: $e');
+      }
+      rethrow;
+    }
+  }
+
+  // POST 请求方法，不包含 headers
+  Future<Map<String, dynamic>> postRequestWithoutHeaders(
+    String endpoint,
+    Map<String, dynamic> body,
+  ) async {
+    final url = Uri.parse('$baseUrl$endpoint');
+
+    try {
+      final response = await http
+          .post(
+            url,
+            body: json.encode(body),
+          )
+          .timeout(const Duration(seconds: 20)); // 设置超时时间
+
+      if (kDebugMode) {
+        print(
+            "POST $baseUrl$endpoint without headers response: ${response.body}");
+      }
+      if (response.statusCode == 200) {
+        return json.decode(response.body) as Map<String, dynamic>;
+      } else {
+        throw Exception(
+            "POST request to $baseUrl$endpoint failed: ${response.statusCode}, ${response.body}");
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(
+            'Error during POST request without headers to $baseUrl$endpoint: $e');
+      }
       rethrow;
     }
   }

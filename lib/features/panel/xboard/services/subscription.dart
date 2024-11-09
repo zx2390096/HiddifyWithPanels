@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:hiddify/core/localization/translations.dart';
 import 'package:hiddify/features/panel/xboard/services/http_service/subscription_service.dart';
@@ -66,11 +68,11 @@ class Subscription {
             context,
             getSubscriptionLink == _subscriptionService.resetSubscriptionLink
                 ? t.userInfo.subscriptionResetSuccess
-                : "t.userInfo.subscriptionUpdateSuccess");
+                : t.userInfo.subscriptionUpdateSuccess);
       }
     } catch (e) {
       _showSnackbar(context,
-          "${getSubscriptionLink == _subscriptionService.resetSubscriptionLink ? t.userInfo.subscriptionResetError : "t.userInfo.subscriptionUpdateError"} $e");
+          "${getSubscriptionLink == _subscriptionService.resetSubscriptionLink ? t.userInfo.subscriptionResetError : t.userInfo.subscriptionUpdateError} $e");
     }
   }
 

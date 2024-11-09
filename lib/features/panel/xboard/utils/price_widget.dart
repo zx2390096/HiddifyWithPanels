@@ -8,7 +8,7 @@ class PriceWidget extends StatelessWidget {
   final String currency;
 
   PriceWidget(
-      {required this.plan, required this.priceLabel, required this.currency});
+      {required this.plan, required this.priceLabel, required this.currency, required TextStyle style});
 
   @override
   Widget build(BuildContext context) {

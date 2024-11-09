@@ -54,9 +54,11 @@ class AccountBalanceCard extends ConsumerWidget {
             child: ListTile(
               leading: const Icon(FluentIcons.wallet_24_filled),
               title: Text(
-                  '${t.userInfo.balance} (${t.userInfo.onlyForConsumption})',),
+                '${t.userInfo.balance} (${t.userInfo.onlyForConsumption})',
+              ),
               subtitle: Text(
-                  '${(userInfo.balance / 100).toStringAsFixed(2)} ${t.userInfo.currency}',),
+                '${(userInfo.balance / 100).toStringAsFixed(2)} ${t.userInfo.currency}',
+              ),
             ),
           ),
           const Divider(height: 1),
@@ -67,7 +69,8 @@ class AccountBalanceCard extends ConsumerWidget {
               leading: const Icon(FluentIcons.gift_card_money_24_filled),
               title: Text(t.userInfo.commissionBalance),
               subtitle: Text(
-                  '${(userInfo.commissionBalance / 100).toStringAsFixed(2)} ${t.userInfo.currency}',),
+                '${(userInfo.commissionBalance / 100).toStringAsFixed(2)} ${t.userInfo.currency}',
+              ),
             ),
           ),
           Container(
@@ -83,7 +86,10 @@ class AccountBalanceCard extends ConsumerWidget {
                 const SizedBox(width: 8),
                 ElevatedButton(
                   onPressed: () => _showWithdrawDialog(
-                      context, ref, userInfo.commissionBalance,),
+                    context,
+                    ref,
+                    userInfo.commissionBalance,
+                  ),
                   child: Text(t.transferDialog.withdraw),
                 ),
               ],
@@ -95,7 +101,10 @@ class AccountBalanceCard extends ConsumerWidget {
   }
 
   void _showTransferDialog(
-      BuildContext context, WidgetRef ref, UserInfo userInfo,) {
+    BuildContext context,
+    WidgetRef ref,
+    UserInfo userInfo,
+  ) {
     final t = ref.read(translationsProvider);
     final amountController = TextEditingController();
 
@@ -178,7 +187,10 @@ class AccountBalanceCard extends ConsumerWidget {
   }
 
   void _showWithdrawDialog(
-      BuildContext context, WidgetRef ref, double commissionBalance,) {
+    BuildContext context,
+    WidgetRef ref,
+    double commissionBalance,
+  ) {
     final t = ref.watch(translationsProvider);
     final amountController = TextEditingController();
 

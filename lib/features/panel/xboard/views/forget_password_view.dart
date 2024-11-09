@@ -50,9 +50,11 @@ class ForgetPasswordPage extends ConsumerWidget {
                 decoration: InputDecoration(
                   labelText: t.forgetPassword.newPassword,
                   suffixIcon: IconButton(
-                    icon: Icon(viewModel.obscurePassword
-                        ? Icons.visibility
-                        : Icons.visibility_off,),
+                    icon: Icon(
+                      viewModel.obscurePassword
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                    ),
                     onPressed: viewModel.togglePasswordVisibility,
                   ),
                 ),
